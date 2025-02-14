@@ -116,20 +116,15 @@ function calculateDateDifference() {
   // Sonucu ekrana yazdır
   const sonucDiv = document.getElementById('sonuc');
   sonucDiv.innerHTML = `${yil} yıl, ${ay} ay, ${gun} gün`;
-</script>
+
 	
 	
 <h1>Ece doğduğundan bu zamana </h1>
-
 <div id="sonuc"></div>
-
-<script>
   // Başlangıç tarihi
   const baslangicTarihi = new Date('2018-02-22');
-
   // Bugünkü tarih
   const bugunkuTarih = new Date();
-
   // İki tarih arasındaki farkı milisaniye cinsinden hesapla
   const farkMilisaniye = bugunkuTarih.getTime() - baslangicTarihi.getTime();
 

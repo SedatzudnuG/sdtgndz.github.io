@@ -1,151 +1,46 @@
+<!DOCTYPE html>
 <html>
-
 <head>
-<meta http-equiv=Content-Type content="text/html; charset=Windows-1254">
-<meta name=Generator content="Microsoft Word 15 (filtered)">
-<title>Sedat Gündüz</title>
+<title>Tarih Hesaplama</title>
 <style>
-<!--
- /* Font Definitions */
- @font-face
-	{font-family:"Cambria Math";
-	panose-1:2 4 5 3 5 4 6 3 2 4;}
-@font-face
-	{font-family:Calibri;
-	panose-1:2 15 5 2 2 2 4 3 2 4;}
- /* Style Definitions */
- p.MsoNormal, li.MsoNormal, div.MsoNormal
-	{margin-top:0cm;
-	margin-right:0cm;
-	margin-bottom:8.0pt;
-	margin-left:0cm;
-	line-height:107%;
-	font-size:11.0pt;
-	font-family:"Calibri",sans-serif;}
-p.MsoHeader, li.MsoHeader, div.MsoHeader
-	{mso-style-link:"Header Char";
-	margin:0cm;
-	margin-bottom:.0001pt;
-	font-size:11.0pt;
-	font-family:"Calibri",sans-serif;}
-p.MsoFooter, li.MsoFooter, div.MsoFooter
-	{mso-style-link:"Footer Char";
-	margin:0cm;
-	margin-bottom:.0001pt;
-	font-size:11.0pt;
-	font-family:"Calibri",sans-serif;}
-span.HeaderChar
-	{mso-style-name:"Header Char";
-	mso-style-link:Header;}
-span.FooterChar
-	{mso-style-name:"Footer Char";
-	mso-style-link:Footer;}
-.MsoChpDefault
-	{font-family:"Calibri",sans-serif;}
-.MsoPapDefault
-	{margin-bottom:8.0pt;
-	line-height:107%;}
- /* Page Definitions */
- @page WordSection1
-	{size:595.3pt 841.9pt;
-	margin:70.85pt 70.85pt 70.85pt 70.85pt;}
-div.WordSection1
-	{page:WordSection1;}
--->
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+}
 </style>
-
 </head>
+<body>
 
-<body lang=TR>
-
-<div class=WordSection1>
-
-<p class=MsoNormal>&nbsp;</p>
-
+<div class="container">
+  <div id="tarih1"></div>
+  <div id="tarih2"></div>
 </div>
 
-
-
-<h1>Tarih Farkini Hesapla</h1>
-
-<label for="startDate">Başlangıç Tarihi:</label>
-<input type="date" id="startDate"><br><br>
-
-<button onclick="calculateDateDifference()">Hesapla</button>
-
-<p id="result"></p>
-
 <script>
-function calculateDateDifference() {
-  const startDateInput = document.getElementById("startDate");
-  const startDate = new Date(startDateInput.value);
-  const today = new Date();
+function tarihHesapla(baslangicTarihi, elementId) {
+  const baslangic = new Date(baslangicTarihi);
+  const simdi = new Date();
 
-  const timeDifference = today.getTime() - startDate.getTime();
-  const dayDifference = Math.ceil(timeDifference / (1000 * 3600 * 24));
+  const gecenSure = simdi - baslangic;
 
-  const resultElement = document.getElementById("result");
-  resultElement.textContent = "iki tarih arasindaki fark: " + dayDifference + " gun.";
+  const gun = Math.floor(gecenSure / (1000 * 60 * 60 * 24));
+  const ay = Math.floor(gecenSure / (1000 * 60 * 60 * 24 * 30));
+  const yil = Math.floor(gecenSure / (1000 * 60 * 60 * 24 * 365));
+
+  document.getElementById(elementId).innerHTML = `${gun} gün, ${ay} ay, ${yil} yıl`;
 }
+
+tarihHesapla("2018-09-16", "tarih1");
+tarihHesapla("2018-02-22", "tarih2");
 </script>
 
-
-
-<h1>Evlendiğimizden bu zamana</h1>
-
-<div id="sonuc"></div>
-
-<script>
-  // Başlangıç tarihi
-  const baslangicTarihi = new Date('2012-09-16');
-
-  // Bugünkü tarih
-  const bugunkuTarih = new Date();
-
-  // İki tarih arasındaki farkı milisaniye cinsinden hesapla
-  const farkMilisaniye = bugunkuTarih.getTime() - baslangicTarihi.getTime();
-
-  // Farkı gün cinsine çevir
-  const farkGun = Math.floor(farkMilisaniye / (1000 * 60 * 60 * 24));
-
-  // Yıl, ay ve gün cinsinden farkı hesapla
-  const yil = Math.floor(farkGun / 365);
-  const ay = Math.floor((farkGun % 365) / 30);
-  const gun = Math.floor((farkGun % 365) % 30);
-
-  // Sonucu ekrana yazdır
-  const sonucDiv = document.getElementById('sonuc');
-  sonucDiv.innerHTML = `${yil} yıl, ${ay} ay, ${gun} gün`;
-
-	</script>
-	
-	
-<h1>Ece doğduğundan bu zamana </h1>
-
-<div id="sonuc"></div>
-<script>
-		
-  // Başlangıç tarihi
-  const baslangicTarihi = new Date('2018-02-22');
-  // Bugünkü tarih
-  const bugunkuTarih = new Date();
-  // İki tarih arasındaki farkı milisaniye cinsinden hesapla
-  const farkMilisaniye = bugunkuTarih.getTime() - baslangicTarihi.getTime();
-
-  // Farkı gün cinsine çevir
-  const farkGun = Math.floor(farkMilisaniye / (1000 * 60 * 60 * 24));
-
-  // Yıl, ay ve gün cinsinden farkı hesapla
-  const yil = Math.floor(farkGun / 365);
-  const ay = Math.floor((farkGun % 365) / 30);
-  const gun = Math.floor((farkGun % 365) % 30);
-
-  // Sonucu ekrana yazdır
-  const sonucDiv = document.getElementById('sonuc');
-  sonucDiv.innerHTML = `${yil} yıl, ${ay} ay, ${gun} gün`;
-</script>
-
-	
 </body>
-
 </html>

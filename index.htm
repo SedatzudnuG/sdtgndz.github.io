@@ -22,6 +22,7 @@ body {
 <div class="container">
   <div id="tarih1"></div>
   <div id="tarih2"></div>
+  <div id="tarih3"></div>
 </div>
 
 <script>
@@ -38,8 +39,9 @@ function tarihHesapla(baslangicTarihi, elementId) {
   document.getElementById(elementId).innerHTML = `${gun} gün, ${ay} ay, ${yil} yıl`;
 }
 
-tarihHesapla("2018-09-16", "tarih1");
+tarihHesapla("2012-09-16", "tarih1");
 tarihHesapla("2018-02-22", "tarih2");
+tarihHesapla("1982-12-14", "tarih3"); 
 </script>
 
 </body>

@@ -90,6 +90,35 @@ function calculateDateDifference() {
 </script>
 
 
+
+<h1>16.09.2012 Tarihinden Bugüne Kadar Geçen Süre</h1>
+
+<div id="sonuc"></div>
+
+<script>
+  // Başlangıç tarihi
+  const baslangicTarihi = new Date('2012-09-16');
+
+  // Bugünkü tarih
+  const bugunkuTarih = new Date();
+
+  // İki tarih arasındaki farkı milisaniye cinsinden hesapla
+  const farkMilisaniye = bugunkuTarih.getTime() - baslangicTarihi.getTime();
+
+  // Farkı gün cinsine çevir
+  const farkGun = Math.floor(farkMilisaniye / (1000 * 60 * 60 * 24));
+
+  // Yıl, ay ve gün cinsinden farkı hesapla
+  const yil = Math.floor(farkGun / 365);
+  const ay = Math.floor((farkGun % 365) / 30);
+  const gun = Math.floor((farkGun % 365) % 30);
+
+  // Sonucu ekrana yazdır
+  const sonucDiv = document.getElementById('sonuc');
+  sonucDiv.innerHTML = `${yil} yıl, ${ay} ay, ${gun} gün`;
+</script>
+	
+
 </body>
 
 </html>

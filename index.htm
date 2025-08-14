@@ -1,58 +1,42 @@
-
-<html>
+<!DOCTYPE html>
+<html lang="tr">
 <head>
-<title>Tarih Hesaplama</title>
-<style>
-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  margin: 0;
-}
-
-.container {
-  text-align: center;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İş Takip Paneli</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="container">
+        <h1>İş Takip Paneli</h1>
+        <form id="task-form">
+            <input type="text" id="task-name" placeholder="İşin Adı" required>
+            <input type="date" id="start-date" required>
+            <input type="date" id="end-date" required>
+            <select id="task-status">
+                <option value="Başlamadı">Başlamadı</option>
+                <option value="Devam Ediyor">Devam Ediyor</option>
+                <option value="Tamamlandı">Tamamlandı</option>
+            </select>
+            <button type="submit">İşi Ekle</button>
+        </form>
 
-<div class="container">
-  <div id="tarih1"></div>
-  <div id="tarih2"></div>
-  <div id="tarih3"></div>
-</div>
+        <table id="task-table">
+            <thead>
+                <tr>
+                    <th>İş Adı</th>
+                    <th>Başlangıç Tarihi</th>
+                    <th>Bitiş Tarihi</th>
+                    <th>Durumu</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+                </tbody>
+        </table>
+    </div>
 
-
-<script>
-function tarihHesapla(baslangicTarihi, elementId) {
-  const baslangic = new Date(baslangicTarihi);
-  const simdi = new Date();
-
-  const gecenSure = simdi - baslangic;
-
-  const gun = Math.floor(gecenSure / (1000 * 60 * 60 * 24));
-  const ay = Math.floor(gecenSure / (1000 * 60 * 60 * 24 * 30));
-  const yil = Math.floor(gecenSure / (1000 * 60 * 60 * 24 * 365));
-
-  document.getElementById(elementId).innerHTML = `${gun} gün, ${ay} ay, ${yil} yıl`;
-}
-
-tarihHesapla("2012-09-16", "tarih1");
-tarihHesapla("2018-02-22", "tarih2");
-tarihHesapla("1982-12-14", "tarih3"); 
-</script>
-
-
-<div class="wrapper">
-  <div class="box">box 1</div>
-  <div class="box">box 2</div>
-  <div class="box">box 3</div>
-  <div class="box">box 4</div>
-  <div class="box">box 5</div>
-</div>
-  
+    <script src="script.js"></script>
 </body>
 </html>
+
